@@ -3,10 +3,6 @@ class RestaurantsController < ApplicationController
     @restaurants = Restaurant.all
   end
 
-  def show
-    @restaurant = Restaurant.find(params[:id])
-  end
-
   def new
     @restaurant = Restaurant.new
   end
@@ -18,6 +14,11 @@ class RestaurantsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def show
+    @restaurant = Restaurant.find(params[:id])
+    @review = Review.new
   end
 
   private
